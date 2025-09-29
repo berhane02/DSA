@@ -11,10 +11,23 @@ class Solution(object):
         :rtype: Optional[TreeNode]
         """
         
-        if root:
-            root.left, root.right = root.right,root.left
-            self.invertTree(root.left)
-            self.invertTree(root.right)
+        # if root:
+        #     root.left, root.right = root.right,root.left
+        #     self.invertTree(root.left)
+        #     self.invertTree(root.right)
+        # return root
+        if root is None:
+            return root
+        q = deque([root])
+
+        while q:
+            node = q.popleft()
+            node.left, node.right = node.right, node.left
+
+            if node.left:
+                q.append(node.left)
+            if node.right:
+                q.append(node.right)
         return root
 
         
