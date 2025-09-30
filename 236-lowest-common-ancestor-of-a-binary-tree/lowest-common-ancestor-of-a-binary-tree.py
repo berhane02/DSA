@@ -20,9 +20,7 @@ class Solution(object):
         l = self.lowestCommonAncestor(root.left, p, q)
         r = self.lowestCommonAncestor(root.right, p, q)
 
-        if l is not None and r is not None:
+        if l and r:
             return root
-        elif l:
-            return l
         else:
-            return r
+            return l or r
