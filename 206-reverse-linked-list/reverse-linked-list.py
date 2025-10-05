@@ -10,14 +10,21 @@ class Solution(object):
         :rtype: Optional[ListNode]
         """
 
-        if not head:
-            return None
+        # if not head:
+        #     return None
 
-        newHead = head
+        # newHead = head
 
-        if head.next:
-            newHead = self.reverseList(head.next)
-            head.next.next = head
-        head.next = None
-        return newHead
-        
+        # if head.next:
+        #     newHead = self.reverseList(head.next)
+        #     head.next.next = head
+        # head.next = None
+        # return newHead
+        prv, curr = None, head
+
+        while curr:
+            nxt = curr.next
+            curr.next = prv
+            prv = curr
+            curr = nxt
+        return prv
