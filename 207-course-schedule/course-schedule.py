@@ -9,7 +9,6 @@ class Solution:
         status = [notvisited]*numCourses
 
         def dfs(i):
-            
             if status[i] == visiting: return False
             if status[i] == visited: return True
 
