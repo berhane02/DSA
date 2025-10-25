@@ -4,13 +4,13 @@ class Trie:
         self.trie = {}
 
     def insert(self, word: str) -> None:
-        d = self.trie
+       d = self.trie
 
-        for c in word:
+       for c in word:
             if c not in d:
                 d[c] = {}
             d = d[c]
-        d['.'] = '.'
+       d['.'] = '.'
 
     def search(self, word: str) -> bool:
         d = self.trie
@@ -23,13 +23,13 @@ class Trie:
     
 
     def startsWith(self, prefix: str) -> bool:
-        d = self.trie
+       d = self.trie
 
-        for c in prefix:
+       for c in prefix:
             if c not in d:
                 return False
             d = d[c]
-        return True
+       return True
 
 
 # Your Trie object will be instantiated and called as such:
