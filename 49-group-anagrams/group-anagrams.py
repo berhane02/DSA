@@ -1,18 +1,8 @@
-class Solution(object):
-    def groupAnagrams(self, strs):
-        """
-        :type strs: List[str]
-        :rtype: List[List[str]]
-        """
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        anag_map = defaultdict(list)
 
-        if len(strs) == 0:
-            return [[""]]
-        result = defaultdict(list)
-
-        for st in strs:
-            counter = [0]*26
-            for c in range(len(st)):
-                counter[ord(st[c])-ord('a')] +=1
-            key = tuple(counter)
-            result[key].append(st)
-        return result.values()
+        for word in strs:
+            sorted_word = ''.join(sorted(word))
+            anag_map[sorted_word].append(word)
+        return list(anag_map.values())
