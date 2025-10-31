@@ -7,15 +7,13 @@ class Solution:
         for i, height in enumerate(heights):
             start = i
             while stk and height < stk[-1][0]:
-                h , j = stk.pop()
+                h, j = stk.pop()
                 w = i-j
                 area = max(area, h*w)
                 start = j
             stk.append((height,start))
 
         while stk:
-            h, j = stk.pop()
-            w = n-j
-            area = max(area, h*w)
-
+            h,j = stk.pop()
+            area = max(area, h*(n-j))
         return area
