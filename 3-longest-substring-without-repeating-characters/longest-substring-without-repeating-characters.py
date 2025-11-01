@@ -4,15 +4,15 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        seen = set()
-        max_len = 0
-        start = 0
+        seen = {}
+        left = max_len = 0
 
-        for i in range(len(s)):
-            while s[i] in seen:
-                seen.remove(s[start])
-                start +=1
-            seen.add(s[i])
-            max_len = max(max_len, len(seen))
+        for right, char in enumerate(s):
+            # If char seen before, move left pointer past its last index
+            if char in seen and seen[char] >= left:
+                left = seen[char] + 1
+            seen[char] = right
+            max_len = max(max_len, right - left + 1)
+
         return max_len
         
