@@ -1,17 +1,16 @@
-class Solution(object):
-    def isValid(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
-        stack = [s[0]]
-        openBracket = ('(','[','{')
-        #closeBracket = (')','}',"'])
-        for i in range(1,len(s)):
-            if s[i] in openBracket:
-                stack.append(s[i])
-            elif len(stack)>0 and (stack[-1] == '(' and s[i] == ')' or stack[-1] == '{' and s[i] == '}' or stack[-1] == '[' and s[i] == ']'):
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        mapping = {')': '(', '}': '{', ']': '['}
+
+        for ch in s:
+            if ch in mapping.values():  # opening bracket
+                stack.append(ch)
+            elif ch in mapping:         # closing bracket
+                if not stack or stack[-1] != mapping[ch]:
+                    return False
                 stack.pop()
             else:
-                stack.append(s[i])
-        return len(stack) == 0
+                return False  # invalid character
+
+        return not stack
