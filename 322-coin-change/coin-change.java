@@ -1,6 +1,7 @@
 class Solution {
     public int coinChange(int[] coins, int amount) {
-        int[] arr = java.util.stream.IntStream.generate(() -> Integer.MAX_VALUE).limit(amount+1).toArray();
+        int[] arr = new int[amount+1];
+        Arrays.fill(arr, Integer.MAX_VALUE);
         arr[0] = 0;
         for(int i = 1; i<amount+1; i++){
             for(int c: coins){
