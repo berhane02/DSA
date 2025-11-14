@@ -10,4 +10,12 @@ class Solution(object):
         #         return True
         #     s.add(n)
         # return False
-        return len(nums) != len(set(nums))
+        #return len(nums) != len(set(nums))
+        dist = {}
+        for i in range(len(nums)):
+            if nums[i] in dist:
+                return True
+            dist[nums[i]] = i
+        return False
+
+print(Solution().containsDuplicate([1,2,3,1]))
