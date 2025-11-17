@@ -4,9 +4,7 @@ class Bank:
         self.balance = balance
         
     def transfer(self, account1: int, account2: int, money: int) -> bool:
-        if not self._valid(account1) or not self._valid(account2):
-            return False
-        if self.balance[account1 - 1] < money:
+        if not self._valid(account1) or not self._valid(account2) or self.balance[account1 - 1] < money:
             return False
         
         self.balance[account1 - 1] -= money
