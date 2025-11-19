@@ -4,13 +4,10 @@ class Solution:
         mapping = {')': '(', '}': '{', ']': '['}
 
         for ch in s:
-            if ch in mapping.values():  # opening bracket
-                stack.append(ch)
-            elif ch in mapping:         # closing bracket
-                if not stack or stack[-1] != mapping[ch]:
+            if ch in mapping:
+                if not stack or stack.pop() != mapping[ch]:
                     return False
-                stack.pop()
             else:
-                return False  # invalid character
+                stack.append(ch)
 
-        return not stack
+        return len(stack) == 0
