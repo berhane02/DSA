@@ -13,7 +13,7 @@ class Solution:
                         boxGrid[r][empty], boxGrid[r][c] = boxGrid[r][c], '.'
                     empty -= 1
 
-        # Step 2: rotate clockwise —— result is n x m
+        
         res = [[None] * m for _ in range(n)]
         for r in range(m):
             for c in range(n):
