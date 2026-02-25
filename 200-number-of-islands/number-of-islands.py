@@ -4,6 +4,7 @@ class Solution:
 
         numIsland = 0
 
+        #check if cell is 1 and set it to 0
         def dfs(i,j):
             if i<0 or i>=m or j<0 or j>=n or grid[i][j]!='1':
                 return
